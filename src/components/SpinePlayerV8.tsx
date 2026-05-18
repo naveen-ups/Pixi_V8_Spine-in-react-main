@@ -217,7 +217,7 @@ export const SpinePlayerV8: React.FC<{ skeletonUrl: string; atlasUrl: string }> 
             // STEP 4: Compute a reasonable scale and center the Spine actor
             try {
                 // Prefer runtime bounds when available (more accurate than skeleton data fields)
-                const skeletonData = spine.skeleton && spine.skeleton.data;
+                const skeletonData: any = spine.skeleton && (spine.skeleton as any).data;
                 const runtimeBounds = (typeof spine.getBounds === 'function') ? spine.getBounds() : null;
                 const skelW = (runtimeBounds && runtimeBounds.width) || (skeletonData && (skeletonData.width || (skeletonData.data && skeletonData.data.width))) || 300;
                 const skelH = (runtimeBounds && runtimeBounds.height) || (skeletonData && (skeletonData.height || (skeletonData.data && skeletonData.data.height))) || 300;
@@ -324,7 +324,7 @@ export const SpinePlayerV8: React.FC<{ skeletonUrl: string; atlasUrl: string }> 
                                     h = Math.max(100, h - bottomHeight - 8);
                                 }
 
-                                const skeletonData = spine.skeleton && spine.skeleton.data;
+                                const skeletonData: any = spine.skeleton && (spine.skeleton as any).data;
                                 const runtimeBounds = (typeof spine.getBounds === 'function') ? spine.getBounds() : null;
                                 const skelH = (runtimeBounds && runtimeBounds.height) || (skeletonData && (skeletonData.height || (skeletonData.data && skeletonData.data.height))) || 300;
                                 const skelW = (runtimeBounds && runtimeBounds.width) || (skeletonData && (skeletonData.width || (skeletonData.data && skeletonData.data.width))) || skelH;

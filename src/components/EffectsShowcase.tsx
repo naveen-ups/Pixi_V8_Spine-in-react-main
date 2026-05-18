@@ -395,12 +395,12 @@ export const EffectsShowcase: React.FC = () => {
             const colors = [0xFF0000, 0x00FF00, 0x0000FF];
             const sprites: PIXI.Graphics[] = [];
 
-            colors.forEach(color => {
+                colors.forEach(color => {
                 const g = new PIXI.Graphics();
                 g.beginFill(color, 0.4);
                 g.drawRect(0, 0, app.screen.width, app.screen.height);
                 g.endFill();
-                g.blendMode = PIXI.BLEND_MODES.ADD;
+                g.blendMode = (PIXI as any).BLEND_MODES.ADD;
                 container.addChild(g);
                 sprites.push(g);
             });
@@ -459,7 +459,7 @@ export const EffectsShowcase: React.FC = () => {
 
         return () => {
             isCancelled = true;
-            appRef.current?.destroy(true, { children: true, texture: true, baseTexture: true });
+            appRef.current?.destroy(true, { children: true, texture: true, baseTexture: true } as any);
         };
     }, []);
 

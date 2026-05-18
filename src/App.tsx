@@ -1,5 +1,5 @@
 import { EffectsShowcase } from './components/EffectsShowcase'
-import { SpinePlayerV8 } from './components/SPinePlayerV8'
+import { SpinePlayerV8 } from './components/SpinePlayerV8'
 
 function App() {
   return (

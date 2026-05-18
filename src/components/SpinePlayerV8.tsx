@@ -472,7 +472,8 @@ export const SpinePlayerV8: React.FC<{ skeletonUrl: string; atlasUrl: string }> 
         }
     }, [userScale]);
 
-    const sliderTop = Math.round(window.innerHeight * 0.10); // 10% from top
+    // Move slider down by 5% (was 10%) to improve visibility
+    const sliderTop = Math.round(window.innerHeight * 0.15); // 15% from top
 
     return (
         <div style={{ width: '100vw', minHeight: '100vh', height: '100dvh', position: 'relative' }}>
@@ -487,12 +488,12 @@ export const SpinePlayerV8: React.FC<{ skeletonUrl: string; atlasUrl: string }> 
 
             {/* Bottom-centered animation selector and debug toggle */}
             {/* Bottom-centered animation buttons: two-line layout */}
-            <div style={{ position: 'absolute', left: 0, right: 0, bottom: 8, zIndex: 10001, pointerEvents: 'auto', display: 'flex', justifyContent: 'center' }}>
-                <div ref={bottomButtonsRef} style={{ display: 'flex', flexWrap: 'wrap', gap: 8, justifyContent: 'center', alignItems: 'center', maxWidth: isNarrow ? '92%' : 720, padding: '8px 12px', boxSizing: 'border-box' }}>
+            <div style={{ position: 'absolute', left: 0, right: 0, bottom: 20, zIndex: 10010, pointerEvents: 'auto', display: 'flex', justifyContent: 'center' }}>
+                <div ref={bottomButtonsRef} style={{ display: 'flex', flexWrap: 'wrap', gap: 10, justifyContent: 'center', alignItems: 'center', maxWidth: isNarrow ? '92%' : 760, padding: '12px 16px', boxSizing: 'border-box', background: 'rgba(0,0,0,0.88)', borderRadius: 16, backdropFilter: 'blur(8px)', boxShadow: '0 8px 30px rgba(0,0,0,0.6)', border: '1px solid rgba(255,255,255,0.18)' }}>
                     {animations.length > 0 ? (
                         animations.map((name, idx) => (
                             <button key={name + idx} onClick={() => spineRef.current?.state.setAnimation(0, name, true)}
-                                style={{ padding: '6px 10px', borderRadius: 16, background: 'rgba(0,0,0,0.7)', color: '#fff', border: '1px solid rgba(255,255,255,0.08)', fontSize: 12, minWidth: 56 }}>
+                                style={{ padding: '10px 14px', borderRadius: 18, background: 'linear-gradient(180deg, rgba(255,255,255,0.03), rgba(0,0,0,0.92))', color: '#FFFFFF', border: '1px solid rgba(255,255,255,0.28)', fontSize: 14, fontWeight: 700, minWidth: 72, boxShadow: '0 10px 30px rgba(0,0,0,0.55)', cursor: 'pointer' }}>
                                 {name}
                             </button>
                         ))

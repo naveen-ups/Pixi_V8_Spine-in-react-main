@@ -488,8 +488,8 @@ export const SpinePlayerV8: React.FC<{ skeletonUrl: string; atlasUrl: string }> 
 
             {/* Bottom-centered animation selector and debug toggle */}
             {/* Bottom-centered animation buttons: two-line layout */}
-            <div style={{ position: 'absolute', left: 0, right: 0, bottom: 'calc(env(safe-area-inset-bottom, 8px) + 12px)', zIndex: 10001, pointerEvents: 'auto', display: 'flex', justifyContent: 'center' }}>
-                <div ref={bottomButtonsRef} style={{ display: 'flex', flexWrap: 'wrap', gap: 8, justifyContent: 'center', alignItems: 'center', maxWidth: isNarrow ? '92%' : 720, padding: '8px 12px', paddingBottom: 'calc(env(safe-area-inset-bottom, 8px) + 8px)', boxSizing: 'border-box' }}>
+            <div style={{ position: 'absolute', left: 0, right: 0, bottom: 'calc(env(safe-area-inset-bottom, 8px) + 28px)', zIndex: 10001, pointerEvents: 'auto', display: 'flex', justifyContent: 'center' }}>
+                <div ref={bottomButtonsRef} style={{ display: 'flex', flexWrap: 'wrap', gap: 8, justifyContent: 'center', alignItems: 'center', maxWidth: isNarrow ? '92%' : 720, padding: '8px 12px', paddingBottom: 'calc(env(safe-area-inset-bottom, 8px) + 24px)', boxSizing: 'border-box' }}>
                     {animations.length > 0 ? (
                         animations.map((name, idx) => (
                             <button key={name + idx} onClick={() => spineRef.current?.state.setAnimation(0, name, true)}

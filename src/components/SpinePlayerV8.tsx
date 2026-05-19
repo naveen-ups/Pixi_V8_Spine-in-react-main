@@ -472,15 +472,15 @@ export const SpinePlayerV8: React.FC<{ skeletonUrl: string; atlasUrl: string }> 
         }
     }, [userScale]);
 
-    // Move slider down by 4% from existing position (now 14% from top)
-    const sliderTop = Math.round(window.innerHeight * 0.14); // 14% from top
+    // Move slider down slightly from existing position (use 18% from top)
+    const sliderTop = Math.round(window.innerHeight * 0.18); // 18% from top
 
     return (
         <div style={{ width: '100vw', minHeight: '100vh', height: '100dvh', position: 'relative' }}>
             <div ref={containerRef} style={{ width: '100%', height: '100%' }} />
 
             {/* Live size slider (on-screen) */}
-            <div style={{ position: 'absolute', top: sliderTop, left: 12, zIndex: 10002, pointerEvents: 'auto', background: 'rgba(0,0,0,0.5)', padding: '6px 8px', borderRadius: 10, border: '1px solid rgba(255,255,255,0.06)', display: 'flex', alignItems: 'center', gap: 8 }}>
+            <div style={{ position: 'absolute', top: sliderTop, left: 12, zIndex: 10002, pointerEvents: 'auto', background: 'rgba(0,0,0,0.9)', padding: '6px 8px', borderRadius: 10, border: '1px solid rgba(255,255,255,0.12)', display: 'flex', alignItems: 'center', gap: 8 }}>
                 <div style={{ color: '#fff', fontSize: 12, fontWeight: 700, minWidth: 48 }}>Size</div>
                 <input aria-label="spine-size" type="range" min={0.4} max={1.2} step={0.01} value={userScale} onChange={(e) => setUserScale(Number(e.target.value))} style={{ width: 140 }} />
                 <div style={{ color: '#fff', fontSize: 12, fontWeight: 700, minWidth: 44, textAlign: 'right' }}>{Math.round(userScale * 100)}%</div>
@@ -488,8 +488,8 @@ export const SpinePlayerV8: React.FC<{ skeletonUrl: string; atlasUrl: string }> 
 
             {/* Bottom-centered animation selector and debug toggle */}
             {/* Bottom-centered animation buttons: two-line layout */}
-            <div style={{ position: 'absolute', left: 0, right: 0, bottom: 8, zIndex: 10001, pointerEvents: 'auto', display: 'flex', justifyContent: 'center' }}>
-                <div ref={bottomButtonsRef} style={{ display: 'flex', flexWrap: 'wrap', gap: 8, justifyContent: 'center', alignItems: 'center', maxWidth: isNarrow ? '92%' : 720, padding: '8px 12px', boxSizing: 'border-box' }}>
+            <div style={{ position: 'absolute', left: 0, right: 0, bottom: 'calc(env(safe-area-inset-bottom, 8px) + 12px)', zIndex: 10001, pointerEvents: 'auto', display: 'flex', justifyContent: 'center' }}>
+                <div ref={bottomButtonsRef} style={{ display: 'flex', flexWrap: 'wrap', gap: 8, justifyContent: 'center', alignItems: 'center', maxWidth: isNarrow ? '92%' : 720, padding: '8px 12px', paddingBottom: 'calc(env(safe-area-inset-bottom, 8px) + 8px)', boxSizing: 'border-box' }}>
                     {animations.length > 0 ? (
                         animations.map((name, idx) => (
                             <button key={name + idx} onClick={() => spineRef.current?.state.setAnimation(0, name, true)}
